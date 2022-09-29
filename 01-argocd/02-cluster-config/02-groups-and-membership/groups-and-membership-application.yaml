@@ -13,7 +13,7 @@ spec:
   project: cluster-config
   source:
     path: 02-cluster-config/02-groups-and-membership
-    repoURL: https://github.com/pittar-gitops/gitops-mono-repo.git
+    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
     automated:

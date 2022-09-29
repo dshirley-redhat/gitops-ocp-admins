@@ -11,7 +11,7 @@ spec:
   project: cluster-bootstrap
   source:
     path: 01-argocd/01-clusters/nonprod
-    repoURL: https://github.com/pittar-gitops/gitops-mono-repo.git
+    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
     automated:

@@ -13,7 +13,7 @@ spec:
   project: cluster-services
   source:
     path: 03-cluster-services/03-web-terminal
-    repoURL: https://github.com/pittar-gitops/gitops-mono-repo.git
+    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
     automated:
