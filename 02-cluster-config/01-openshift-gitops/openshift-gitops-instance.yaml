@@ -4,7 +4,7 @@ metadata:
   # annotations:
   #   argocd.argoproj.io/sync-options: Prune=false
   #   argocd.argoproj.io/compare-options: IgnoreExtraneous
-  name: developer-gitops
+  name: openshift-gitops
 spec:
   server:
     autoscale:
