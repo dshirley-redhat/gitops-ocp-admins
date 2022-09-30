@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: tenants
   source:
-    path: 03-tenants/02-contoso
+    path: 04-tenants/02-contoso
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
