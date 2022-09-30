@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - openshift-gitops-admins-group.yaml
+  - openshift-cluster-admins.yaml
