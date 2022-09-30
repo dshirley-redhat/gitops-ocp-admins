@@ -10,7 +10,7 @@ spec:
   destination:
     namespace: developer-gitops
     server: https://kubernetes.default.svc
-  project: tenants
+  project: cluster-services
   source:
     path: 03-cluster-services/00-developer-gitops
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
