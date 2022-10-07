@@ -6,3 +6,11 @@ metadata:
 data:
   config.yaml: |
     enableUserWorkload: true
+    prometheusK8s: 
+      volumeClaimTemplate:
+        spec:
+          storageClassName: fast
+          volumeMode: Filesystem
+          resources:
+            requests:
+              storage: 40Gi
