@@ -9,7 +9,7 @@ data:
     prometheusK8s: 
       volumeClaimTemplate:
         spec:
-          storageClassName: thin
+          storageClassName: fast
           volumeMode: Filesystem
           resources:
             requests:
