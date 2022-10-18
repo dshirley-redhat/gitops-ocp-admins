@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
+  - create-pipeline-local-user-job.yaml
   - openshift-gitops-instance.yaml
   - openshift-gitops-argocd-extended-clusterrole.yaml
   - openshift-gitops-argocd-extended-clusterrolebinding.yaml

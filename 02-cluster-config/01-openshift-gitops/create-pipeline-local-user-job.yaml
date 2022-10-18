@@ -1,0 +1,66 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-$ACCOUNT_NAME-local-user
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - image: registry.redhat.io/openshift-gitops-1/argocd-rhel8:v1.5.0
+        command:
+          - /bin/bash
+          - -c
+          - |
+            export HOME=/home/argocd
+            echo "Checking if $ACCOUNT_NAME account already there..."
+            HAS_ACCOUNT=$(kubectl get cm argocd-cm -o jsonpath={.data."accounts\.$ACCOUNT_NAME"})
+            if [ -z "$HAS_ACCOUNT" ];
+            then
+                echo "$ACCOUNT_NAME account doesn't exist, adding"
+                echo "Getting argocd admin credential..."
+                if kubectl get secret openshift-gitops-cluster;
+                then
+                  # Create $ACCOUNT_NAME user
+                  kubectl patch cm argocd-cm --patch '{"data": {"accounts.$ACCOUNT_NAME": "apiKey"}}'
+                else
+                  echo "Secret openshift-gitops-cluster not available, could not interact with API"
+                fi
+            else
+                echo "$ACCOUNT_NAME account already added, skipping"
+            fi
+
+            HAS_SECRET=$(kubectl get secret argocd-env-secret -n $TARGET_NAMESPACE --ignore-not-found)
+            if [ -z "$HAS_SECRET" ];
+            then
+              echo "No argo-env-secret present, creating"
+              PASSWORD=$(oc get secret openshift-gitops-cluster -o jsonpath="{.data.admin\.password}" | base64 -d)
+              argocd login --grpc-web --insecure --username admin --password ${PASSWORD} ${OPENSHIFT_GITOPS_SERVER}
+              TOKEN=$(argocd account generate-token --account $ACCOUNT_NAME)
+              if [ "$TOKEN" ];
+              then
+                kubectl create secret generic argocd-env-secret --from-literal=ARGOCD_AUTH_TOKEN=${TOKEN} -n ${TARGET_NAMESPACE}
+              else
+                echo "Token $TOKEN could not be generated, no secret created"
+              fi
+            else
+              echo "The secret argocd-env-secret already exists, skipping"
+            fi
+        env:
+        # The CICD namespace where the token needs to be deployed to
+        - name: TARGET_NAMESPACE
+          value: "cicd-tools"
+        - name: OPENSHIFT_GITOPS_SERVER
+          value: ""
+        - name: ACCOUNT_NAME
+          value: "jenkins"
+        imagePullPolicy: Always
+        name: create-$ACCOUNT_NAME-local-user
+      serviceAccount: openshift-gitops-argocd-application-controller
+      serviceAccountName: openshift-gitops-argocd-application-controller
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      terminationGracePeriodSeconds: 30
