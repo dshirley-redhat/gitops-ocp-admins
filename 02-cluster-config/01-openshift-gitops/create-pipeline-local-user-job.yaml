@@ -58,7 +58,7 @@ spec:
         - name: ACCOUNT_NAME
           value: "jenkins"
         imagePullPolicy: Always
-        name: create-${ACCOUNT_NAME}-local-user
+        name: create-local-user-job
       serviceAccount: openshift-gitops-argocd-application-controller
       serviceAccountName: openshift-gitops-argocd-application-controller
       dnsPolicy: ClusterFirst
