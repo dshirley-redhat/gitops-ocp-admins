@@ -17,7 +17,7 @@ spec:
           - |
             export HOME=/home/argocd
             echo "Checking if $ACCOUNT_NAME account already there..."
-            HAS_ACCOUNT=$(kubectl get cm argocd-cm -o jsonpath={.data."accounts\.$ACCOUNT_NAME"})
+            HAS_ACCOUNT=$(kubectl get cm argocd-cm -o jsonpath={.data."accounts\.${ACCOUNT_NAME}"})
             if [ -z "$HAS_ACCOUNT" ];
             then
                 echo "$ACCOUNT_NAME account doesn't exist, adding"
@@ -25,7 +25,7 @@ spec:
                 if kubectl get secret openshift-gitops-cluster;
                 then
                   # Create $ACCOUNT_NAME user
-                  kubectl patch cm argocd-cm --patch '{"data": {"accounts.$ACCOUNT_NAME": "apiKey"}}'
+                  kubectl patch cm argocd-cm --patch '{"data": {"accounts.${ACCOUNT_NAME}": "apiKey"}}'
                 else
                   echo "Secret openshift-gitops-cluster not available, could not interact with API"
                 fi
