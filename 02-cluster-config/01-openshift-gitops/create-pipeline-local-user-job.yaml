@@ -54,7 +54,7 @@ spec:
         - name: TARGET_NAMESPACE
           value: "cicd-tools"
         - name: OPENSHIFT_GITOPS_SERVER
-          value: ""
+          value: "http://openshift-gitops-server"
         - name: ACCOUNT_NAME
           value: "jenkins"
         imagePullPolicy: Always
