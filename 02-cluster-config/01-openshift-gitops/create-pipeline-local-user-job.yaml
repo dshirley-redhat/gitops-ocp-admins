@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-$ACCOUNT_NAME-local-user
+  name: create-local-user
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/hook: PostSync
