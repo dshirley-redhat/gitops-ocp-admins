@@ -58,7 +58,6 @@ spec:
     policy: |
       g, system:cluster-admins, role:admin
       g, openshift-cluster-admins, role:admin
-      g, cluster-admins, role:admin
     scopes: '[groups]'
   repo:
     resources:
