@@ -5,4 +5,5 @@ namespace: openshift-monitoring
 
 resources:
   - cluster-monitoring-config.yaml
+  - fast-storageclass.yaml
 
