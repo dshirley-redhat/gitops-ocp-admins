@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: openshift-monitoring
 
 resources:
-  - cluster-monitoring-config.yaml
   - fast-storageclass.yaml
+  - cluster-monitoring-config.yaml
+  - user-workload-monitoring-config.yaml
 
