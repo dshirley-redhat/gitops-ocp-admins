@@ -5,14 +5,14 @@ metadata:
     argocd.argoproj.io/sync-wave: "23"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: cluster-monitoring
+  name: cluster-monitoring-config
 spec:
   destination:
     namespace: openshift-monitoring
     server: https://kubernetes.default.svc
   project: cluster-config
   source:
-    path: 02-cluster-config/03-cluster-monitoring
+    path: 02-cluster-config/03-cluster-monitoring/cluster-monitoring-config
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
