@@ -9,3 +9,4 @@ resources:
   - developer-gitops-consolelink.yaml
   - developer-gitops-argocd-extended-clusterrole.yaml
   - developer-gitops-argocd-extended-clusterrolebinding.yaml
+  - argocd-rbac-cm.yaml
