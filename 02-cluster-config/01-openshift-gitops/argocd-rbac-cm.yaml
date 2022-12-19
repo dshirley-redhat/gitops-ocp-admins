@@ -3,21 +3,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: argocd-rbac-cm
-  namespace: openshift-gitops
-  uid: f4ac81ac-9e0c-4b52-bbb9-ac72c5c35958
-  resourceVersion: '33944'
-  creationTimestamp: '2022-12-15T21:23:37Z'
-  labels:
-    app.kubernetes.io/managed-by: openshift-gitops
-    app.kubernetes.io/name: argocd-rbac-cm
-    app.kubernetes.io/part-of: argocd
-  ownerReferences:
-    - apiVersion: argoproj.io/v1alpha1
-      kind: ArgoCD
-      name: openshift-gitops
-      uid: 978b595a-2898-4458-a314-e18ae4895df4
-      controller: true
-      blockOwnerDeletion: true
 data:
   policy.csv: |
     g, system:cluster-admins, role:admin
