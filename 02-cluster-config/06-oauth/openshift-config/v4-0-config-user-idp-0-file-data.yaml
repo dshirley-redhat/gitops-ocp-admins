@@ -1,0 +1,11 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: v4-0-config-user-idp-0-file-data
+  namespace: openshift-authentication
+  labels:
+    app.kubernetes.io/instance: oauth
+data:
+  htpasswd: >-
+    ZGVyZWs6JDJ5JDA1JGJ3UWhILkZuN2lxd3dMS05uTnZCRy5KYzE2M3NUVVp5d3hFYk13RVE5LlV3WTBBWDNDNXYuCg==
+type: Opaque
