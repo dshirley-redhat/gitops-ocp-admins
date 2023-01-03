@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
-  - oauth.yaml
+  - openshift-authentication.yaml
