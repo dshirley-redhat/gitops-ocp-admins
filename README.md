@@ -21,7 +21,7 @@ Starting from a fresh cluster, there are two main configurations that need to be
 Login to the new cluster as a `cluster-admin` user and run:
 
 ```
-$ oc apply -k 00-bootstrap/00-seed
+oc apply -k 01-argocd/01-clusters/nonprod/00-bootstrap
 ```
 
 This will:
