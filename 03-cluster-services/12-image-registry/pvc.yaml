@@ -5,9 +5,9 @@ metadata:
   namespace: openshift-image-registry
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 50Gi
-  storageClassName: thin-csi
+  storageClassName: thin
   volumeMode: Block
