@@ -7,4 +7,5 @@ metadata:
   labels:	
     app.kubernetes.io/instance: oauth	
   name: v4-0-config-user-idp-0-file-data2
+  namespace: openshift-authentication
 type: Opaque
