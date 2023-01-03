@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - oauth.yaml
-  - v4-0-config-user-idp-0-file-data
+  - v4-0-config-user-idp-0-file-data.yaml
