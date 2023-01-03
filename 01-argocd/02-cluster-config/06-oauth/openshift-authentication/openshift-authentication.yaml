@@ -5,14 +5,14 @@ metadata:
     argocd.argoproj.io/sync-wave: "22"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: oauth
+  name: openshift-authentication
 spec:
   destination:
-    namespace: openshift-config
+    namespace: openshift-authentication
     server: https://kubernetes.default.svc
   project: cluster-config
   source:
-    path: 02-cluster-config/06-oauth
+    path: 02-cluster-config/06-oauth/openshift-authentication
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
