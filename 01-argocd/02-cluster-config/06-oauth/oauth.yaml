@@ -10,6 +10,8 @@ spec:
   ignoreDifferences:
   - kind: Secret
     name: v4-0-config-user-idp-0-file-data
+    jsonPointers:
+    - /
   destination:
     namespace: openshift-config
     server: https://kubernetes.default.svc
