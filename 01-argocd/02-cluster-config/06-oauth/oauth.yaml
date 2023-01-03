@@ -16,7 +16,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-config
   source:
-    path: 02-cluster-config/06-oauth/openshift-config
+    path: 02-cluster-config/06-oauth
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
