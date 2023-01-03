@@ -8,8 +8,7 @@ metadata:
   name: oauth
 spec:
   ignoreDifferences:
-  - group: apps
-    kind: Secret
+  - kind: Secret
     name: v4-0-config-user-idp-0-file-data
   destination:
     namespace: openshift-config
