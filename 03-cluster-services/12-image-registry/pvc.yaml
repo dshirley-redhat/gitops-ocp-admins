@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 50Gi
   storageClassName: thin
-  volumeMode: Block
+  volumeMode: Filesystem
