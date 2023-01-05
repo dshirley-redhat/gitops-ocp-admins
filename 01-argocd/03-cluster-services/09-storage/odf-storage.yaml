@@ -16,9 +16,7 @@ spec:
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
+    automated: {}
     syncOptions:
       - ApplyOutOfSyncOnly=true
     retry:
