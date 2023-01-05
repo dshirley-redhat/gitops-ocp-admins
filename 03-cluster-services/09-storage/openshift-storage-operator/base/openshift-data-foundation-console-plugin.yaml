@@ -5,7 +5,7 @@ metadata:
 spec:
   displayName: ODF Plugin
   service:
-    basePath: /
+    basePath: /compatibility/
     name: odf-console-service
     namespace: openshift-storage
     port: 9001
