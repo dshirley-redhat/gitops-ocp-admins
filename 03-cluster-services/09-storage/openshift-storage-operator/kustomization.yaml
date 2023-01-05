@@ -3,7 +3,3 @@ kind: Kustomization
 
 bases:
   - operator
-
-resources:
-  - ocs-operatorgroup.yaml
-  - ocs-subscription.yaml
