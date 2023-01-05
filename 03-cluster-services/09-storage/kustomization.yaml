@@ -4,5 +4,5 @@ kind: Kustomization
 bases:
   - openshift-storage-operator
 
-#resources:
-#  - obc-registry.yaml
+resources:
+  - obc-registry.yaml
