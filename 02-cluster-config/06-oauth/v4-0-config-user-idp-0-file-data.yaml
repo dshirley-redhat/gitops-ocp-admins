@@ -1,7 +1,7 @@
 apiVersion: v1	
 data:	
   htpasswd: >-
-    ZGVyZWs6JDJ5JDA1JGJ3UWhILkZuN2lxd3dMS05uTnZCRy5KYzE2M3NUVVp5d3hFYk13RVE5LlV3WTBBWDNDNXYuCg==
+    dGVzdDokYXByMSRNY2YwcldyNSRBcDduUFJzQi56UWJaMVBDQ3FQVEwwCg==
 kind: Secret	
 metadata:	
   labels:	
