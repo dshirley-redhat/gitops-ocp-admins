@@ -3,6 +3,6 @@ kind: Kustomization
 
 bases:
   - dev
-  #- qa
-  #- test
-  #- prod
+  - qa
+  - test
+  - prod
