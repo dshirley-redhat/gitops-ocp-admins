@@ -8,7 +8,7 @@ bases: []
   #- ../../../04-tenants/01-common-tools
   #- ../../../04-tenants/02-contoso
   #- ../../../04-tenants/03-gameoflife
-  #- ../../../04-tenants/04-petclinic
+  - ../../../04-tenants/04-petclinic
 
 resources:
   - tenants-project.yaml
