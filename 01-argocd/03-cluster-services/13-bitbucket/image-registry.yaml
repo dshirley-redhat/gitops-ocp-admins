@@ -5,13 +5,13 @@ metadata:
     argocd.argoproj.io/sync-wave: "38"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: bitbucket
+  name: image-registry
 spec:
   destination:
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/13-bitbucket
+    path: 03-cluster-services/12-image-registry
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
