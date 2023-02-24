@@ -1,8 +1,16 @@
 
-kind: ServiceAccount
+kind: Service
 apiVersion: v1
 metadata:
-  creationTimestamp: null
+  annotations:
+    description: Exposes the database server
+  name: gogs-postgresql
   labels:
     app: gogs
-  name: gogs
+spec:
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: 5432
+  selector:
+    name: gogs-postgresql
