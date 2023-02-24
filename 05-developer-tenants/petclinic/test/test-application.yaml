@@ -10,7 +10,7 @@ spec:
   destination:
     namespace: developer-gitops
     server: https://kubernetes.default.svc
-  project: tenants
+  project: petclinic
   source:
     path: 05-developer-tenants/petclinic-test
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
