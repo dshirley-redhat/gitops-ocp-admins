@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: petclinic
   source:
-    path: 05-developer-tenants/petclinic
+    path: 05-developer-tenants/petclinic-dev
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
