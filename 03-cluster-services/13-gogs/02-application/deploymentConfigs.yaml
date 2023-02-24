@@ -1,0 +1,165 @@
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  annotations:
+    description: Defines how to deploy the database
+  name: gogs-postgresql
+  labels:
+    app: gogs
+spec:
+  replicas: 1
+  selector:
+    name: gogs-postgresql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: gogs-postgresql
+      name: gogs-postgresql
+    spec:
+      serviceAccountName: gogs
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          value: ${DATABASE_USER}
+        - name: POSTGRESQL_PASSWORD
+          value: ${DATABASE_PASSWORD}
+        - name: POSTGRESQL_DATABASE
+          value: ${DATABASE_NAME}
+        - name: POSTGRESQL_MAX_CONNECTIONS
+          value: ${DATABASE_MAX_CONNECTIONS}
+        - name: POSTGRESQL_SHARED_BUFFERS
+          value: ${DATABASE_SHARED_BUFFERS}
+        - name: POSTGRESQL_ADMIN_PASSWORD
+          value: ${DATABASE_ADMIN_PASSWORD}
+        image: ' '
+        livenessProbe:
+          initialDelaySeconds: 30
+          tcpSocket:
+            port: 5432
+          timeoutSeconds: 1
+          failureThreshold: 10
+          periodSeconds: 20
+        name: postgresql
+        ports:
+        - containerPort: 5432
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -i
+            - -c
+            - psql -h 127.0.0.1 -U ${POSTGRESQL_USER} -q -d ${POSTGRESQL_DATABASE} -c 'SELECT 1'
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+          failureThreshold: 10
+        resources:
+          limits:
+            memory: 512Mi
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: gogs-postgres-data
+      volumes:
+      - name: gogs-postgres-data
+        persistentVolumeClaim:
+          claimName: gogs-postgres-data
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - postgresql
+      from:
+        kind: ImageStreamTag
+        name: postgresql:${DATABASE_VERSION}
+        namespace: openshift
+    type: ImageChange
+  - type: ConfigChange
+---
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  replicas: 1
+  selector:
+    app: gogs
+    deploymentconfig: gogs
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gogs
+        deploymentconfig: gogs
+    spec:
+      serviceAccountName: gogs
+      containers:
+      - image: " "
+        imagePullPolicy: Always
+        name: gogs
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - name: gogs-data
+          mountPath: /opt/gogs/data
+        - name: gogs-config
+          mountPath: /etc/gogs/conf
+        readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 40
+            timeoutSeconds: 1
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+        livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 40
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 10
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: gogs-data
+        persistentVolumeClaim:
+          claimName: gogs-data
+      - name: gogs-config
+        configMap:
+          name: gogs-config
+          items:
+            - key: app.ini
+              path: app.ini
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - gogs
+      from:
+        kind: ImageStreamTag
+        name: gogs:${GOGS_VERSION}
+    type: ImageChange

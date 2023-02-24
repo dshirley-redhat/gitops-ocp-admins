@@ -4,4 +4,6 @@ kind: Kustomization
 namespace: gogs
 
 bases:
-  - service.yaml
+  - services.yaml
+  - routes.yaml
+  - pvcs.yaml

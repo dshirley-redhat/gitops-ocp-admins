@@ -1,0 +1,39 @@
+
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    description: Exposes the database server
+  name: gogs-postgresql
+  labels:
+    app: gogs
+spec:
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: 5432
+  selector:
+    name: gogs-postgresql
+---
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    description: The Gogs server's http port
+    service.alpha.openshift.io/dependencies: '[{"name":"gogs-postgresql","namespace":"","kind":"Service"}]'
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  ports:
+  - name: 3000-tcp
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: gogs
+    deploymentconfig: gogs
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
