@@ -2,17 +2,17 @@ kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "43"
+    argocd.argoproj.io/sync-wave: "44"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: gameoflife-tenant-namespaces
+  name: developer-tenants
 spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: tenants
   source:
-    path: 04-tenants-namespaces/03-gameoflife
+    path: 05-developer-tenants
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:

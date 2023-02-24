@@ -3,4 +3,3 @@ kind: Kustomization
 
 bases:
   - 01-namespaces
-  - 02-tenants
