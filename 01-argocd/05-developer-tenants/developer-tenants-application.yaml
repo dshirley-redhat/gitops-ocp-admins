@@ -10,6 +10,7 @@ spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
+  project: tenants
   source:
     path: 05-developer-tenants
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
