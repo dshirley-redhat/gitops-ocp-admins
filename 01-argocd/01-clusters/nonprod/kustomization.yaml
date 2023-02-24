@@ -5,4 +5,4 @@ bases:
   - 01-cluster-config
   - 02-cluster-services
   - 03-tenants
-  - ../05-developer-tenants
+  - ../../05-developer-tenants
