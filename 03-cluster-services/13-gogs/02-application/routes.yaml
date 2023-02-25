@@ -1,18 +1,19 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: gogs
+  name: gitbucket
   labels:
-    app: gogs
-    app.kubernetes.io/instance: gogs
+    app: gitbucket
+    app.kubernetes.io/component: gitbucket
+    app.kubernetes.io/instance: gitbucket
 spec:
-  host: gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
+  host: gitbucket-gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
   to:
     kind: Service
-    name: gogs
+    name: gitbucket
     weight: 100
   port:
-    targetPort: 3000-tcp
+    targetPort: 8080-tcp
   tls:
     termination: edge
   wildcardPolicy: None
