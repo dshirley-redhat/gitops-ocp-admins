@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitbucket
+    app.kubernetes.io/component: gitbucket
+    app.kubernetes.io/instance: gitbucket
+  name: gitbucket
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      deployment: gitbucket
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deployment: gitbucket
+    spec:
+      containers:
+      - image: quay.io/central/gitbucket:latest
+        imagePullPolicy: IfNotPresent
+        name: gitbucket
+        ports:
+        - containerPort: 29418
+          protocol: TCP
+        - containerPort: 8080
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /gitbucket
+          name: gitbucket-volume-1
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      serviceAccount: gogs
+      serviceAccountName: gogs
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: gitbucket-volume-1
