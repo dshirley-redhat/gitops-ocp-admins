@@ -1,6 +1,5 @@
 kind: Route
 apiVersion: v1
-id: gogs-http
 metadata:
   annotations:
     description: Route for application's http service.
