@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: gogs-data
+  name: gitbucket-data
   labels:
-    app: gogs
+    app: gitbucket
 spec:
   accessModes:
     - ReadWriteOnce
