@@ -18,7 +18,7 @@ spec:
         name: gogs-postgresql
       name: gogs-postgresql
     spec:
-      serviceAccountName: gogs
+      serviceAccountName: default
       containers:
       - env:
         - name: POSTGRESQL_USER
