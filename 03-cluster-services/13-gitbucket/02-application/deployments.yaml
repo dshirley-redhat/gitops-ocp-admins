@@ -29,7 +29,9 @@ spec:
         image: registry.redhat.io/ubi8/openjdk-8
         command: ['sh', '-c', 
           '
-          curl -L -o $GITBUCKET_HOME/h2.jar https://github.com/h2database/h2database/releases/download/version-2.1.214/h2-2.1.214.jar
+          curl -L -o h2.jar https://github.com/h2database/h2database/releases/download/version-2.1.214/h2-2.1.214.jar
+
+          pwd
 
           ls -la
 
