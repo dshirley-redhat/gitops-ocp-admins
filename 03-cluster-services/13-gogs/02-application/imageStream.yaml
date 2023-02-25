@@ -9,7 +9,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: docker.io/openshiftdemos/gogs:latest
+      name: quay.io/gogs/gogs:latest
     importPolicy: {}
     annotations:
       description: The Gogs git server docker image
