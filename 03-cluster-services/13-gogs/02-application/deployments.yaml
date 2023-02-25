@@ -49,6 +49,11 @@ spec:
               configMapKeyRef:
                 name: gitbucket-config
                 key: gitbucket.base_url
+          - name: GITBUCKET_HOME
+            valueFrom:
+              configMapKeyRef:
+                name: gitbucket-config
+                key: gitbucket.home
         ports:
         - containerPort: 29418
           protocol: TCP
