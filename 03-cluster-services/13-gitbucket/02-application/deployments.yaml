@@ -31,11 +31,14 @@ spec:
           '
           curl -L -o h2.jar https://github.com/h2database/h2database/releases/download/version-2.1.214/h2-2.1.214.jar
 
-          pwd
+          #/home/jboss/h2.jar
+          
+          echo "SCRIPT TO 'db-dump.sql'" > query.sql
+          
+          #java -cp /home/jboss/h2.jar org.h2.tools.Script -url "jdbc:h2:file:./foo" -user sa -password ""
+          #java -cp /home/jboss/h2.jar org.h2.tools.RunScript -url "jdbc:h2:file:./vocablesDb" -user username -password pazzword -script query.sql -showResults
 
-          ls -la
-
-          sudomv h2.jar $GITBUCKET_HOME
+          sudomv h2.jar /data/gitbucket/h2.jar
 
           ls $GITBUCKET_HOME -la
 
