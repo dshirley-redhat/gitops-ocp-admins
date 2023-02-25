@@ -28,7 +28,13 @@ spec:
       - name: copy-db
         image: registry.access.redhat.com/ubi8/ubi:latest
         command: ['sh', '-c', 
-          'curl google.ca > some-file.txt && cp some-file.txt $GITBUCKET_HOME']
+          'curl google.ca > some-file.txt && mv some-file.txt $GITBUCKET_HOME']
+        env:
+          - name: GITBUCKET_HOME
+            valueFrom:
+              configMapKeyRef:
+                name: gitbucket-config
+                key: gitbucket.home
       containers:
       - image: quay.io/central/gitbucket:latest
         imagePullPolicy: IfNotPresent
