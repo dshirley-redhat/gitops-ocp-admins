@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/component: gitbucket
     app.kubernetes.io/instance: gitbucket
 spec:
-  host: gitbucket-gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
+  host: gitbucket.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
   to:
     kind: Service
     name: gitbucket

@@ -1,7 +1,7 @@
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
-namespace: gogs
+namespace: gitbucket
 
 resources:
-  - gogs.yaml
+  - gitbucket.yaml

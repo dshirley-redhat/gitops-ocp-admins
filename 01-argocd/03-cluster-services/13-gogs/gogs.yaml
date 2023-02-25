@@ -5,13 +5,13 @@ metadata:
     argocd.argoproj.io/sync-wave: "38"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: gogs
+  name: gitbucket
 spec:
   destination:
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/13-gogs
+    path: 03-cluster-services/13-gitbucket
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
