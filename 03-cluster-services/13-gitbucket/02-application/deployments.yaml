@@ -33,7 +33,7 @@ spec:
 
           ls -la
 
-          mv h2.jar $GITBUCKET_HOME
+          sudo mv h2.jar $GITBUCKET_HOME
 
           ls $GITBUCKET_HOME -la
 
