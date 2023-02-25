@@ -6,6 +6,7 @@ namespace: gogs
 bases:
   - serviceAccount.yaml
   - imageStream.yaml
+  - secrets.yaml
   - services.yaml
   - routes.yaml
   - pvcs.yaml

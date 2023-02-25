@@ -28,6 +28,22 @@ spec:
       - image: quay.io/central/gitbucket:latest
         imagePullPolicy: IfNotPresent
         name: gitbucket
+        env:
+          - name: gitbucket.db.password
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-db
+                key: gitbucket.db.password
+          - name: gitbucket.db.user
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-db
+                key: gitbucket.db.user
+          - name: gitbucket.db.db
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-db
+                key: gitbucket.db.url
         ports:
         - containerPort: 29418
           protocol: TCP
