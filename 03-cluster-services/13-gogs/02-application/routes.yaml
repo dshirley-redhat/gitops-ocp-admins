@@ -9,4 +9,11 @@ metadata:
 spec:
   host: gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
   to:
+    kind: Service
     name: gogs
+    weight: 100
+  port:
+    targetPort: 3000-tcp
+  tls:
+    termination: edge
+  wildcardPolicy: None
