@@ -28,7 +28,7 @@ spec:
       - name: copy-db
         image: registry.access.redhat.com/ubi8/ubi:latest
         command: ['sh', '-c', 
-          'curl google.ca > some-file.txt && mv some-file.txt $GITBUCKET_HOME']
+          'curl -o data.mv.db https://github.com/dshirley-redhat/gitops-ocp-admins/blob/351cd1e5029201d3b86f50ea8575ef50fcae1e8d/03-cluster-services/13-gitbucket/02-application/data.mv.db && mv data.mv.db $GITBUCKET_HOME']
         env:
           - name: GITBUCKET_HOME
             valueFrom:
