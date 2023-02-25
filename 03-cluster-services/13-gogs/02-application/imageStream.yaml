@@ -1,0 +1,17 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: docker.io/openshiftdemos/gogs:latest
+    importPolicy: {}
+    annotations:
+      description: The Gogs git server docker image
+      tags: gogs,go,golang
+      version: latest
