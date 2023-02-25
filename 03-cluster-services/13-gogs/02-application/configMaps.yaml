@@ -5,4 +5,4 @@ metadata:
   labels:
     app: gitbucket
 data:
-  gitbucket.base_url: gitbucket-gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
+  gitbucket.base_url: https://gitbucket-gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
