@@ -33,7 +33,7 @@ spec:
           value: 12MB
         - name: POSTGRESQL_ADMIN_PASSWORD
           value: admin-password
-        image: ' '
+        image: 'postgresql:9.5'
         livenessProbe:
           initialDelaySeconds: 30
           tcpSocket:
