@@ -7,3 +7,4 @@ bases:
   - services.yaml
   - routes.yaml
   - pvcs.yaml
+  - configMaps.yaml
