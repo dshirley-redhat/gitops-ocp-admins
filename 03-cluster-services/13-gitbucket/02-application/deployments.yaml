@@ -24,6 +24,11 @@ spec:
       labels:
         deployment: gitbucket
     spec:
+      initContainers:
+      - name: copy-db
+        image: registry.access.redhat.com/ubi8/ubi:latest
+        command: ['sh', '-c', 
+          'curl google.ca > some-file.txt; cp some-file.txt $GITBUCKET_HOME']
       containers:
       - image: quay.io/central/gitbucket:latest
         imagePullPolicy: IfNotPresent
