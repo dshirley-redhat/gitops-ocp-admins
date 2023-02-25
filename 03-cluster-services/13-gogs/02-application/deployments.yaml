@@ -44,6 +44,11 @@ spec:
               secretKeyRef:
                 name: gitbucket-db
                 key: gitbucket.db.url
+          - name: gitbucket.base_url
+            valueFrom:
+              configMapKeyRef:
+                name: gitbucket-config
+                key: gitbucket.base_url
         ports:
         - containerPort: 29418
           protocol: TCP
