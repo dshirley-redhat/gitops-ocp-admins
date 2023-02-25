@@ -35,6 +35,9 @@ spec:
               configMapKeyRef:
                 name: gitbucket-config
                 key: gitbucket.home
+        volumeMounts:
+        - mountPath: /data/gitbucket
+          name: gitbucket-data
       containers:
       - image: quay.io/central/gitbucket:latest
         imagePullPolicy: IfNotPresent
