@@ -44,7 +44,7 @@ spec:
               secretKeyRef:
                 name: gitbucket-db
                 key: gitbucket.db.url
-          - name: gitbucket.base_url
+          - name: GITBUCKET_BASE_URL
             valueFrom:
               configMapKeyRef:
                 name: gitbucket-config
