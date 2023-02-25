@@ -22,17 +22,17 @@ spec:
       containers:
       - env:
         - name: POSTGRESQL_USER
-          value: ${DATABASE_USER}
+          value: gogs-user
         - name: POSTGRESQL_PASSWORD
-          value: ${DATABASE_PASSWORD}
+          value: gogs-user-password
         - name: POSTGRESQL_DATABASE
-          value: ${DATABASE_NAME}
+          value: gogs-db
         - name: POSTGRESQL_MAX_CONNECTIONS
-          value: ${DATABASE_MAX_CONNECTIONS}
+          value: 100
         - name: POSTGRESQL_SHARED_BUFFERS
-          value: ${DATABASE_SHARED_BUFFERS}
+          value: 12MB
         - name: POSTGRESQL_ADMIN_PASSWORD
-          value: ${DATABASE_ADMIN_PASSWORD}
+          value: admin-password
         image: ' '
         livenessProbe:
           initialDelaySeconds: 30
@@ -71,7 +71,7 @@ spec:
       - postgresql
       from:
         kind: ImageStreamTag
-        name: postgresql:${DATABASE_VERSION}
+        name: postgresql:9.5
         namespace: openshift
     type: ImageChange
   - type: ConfigChange
@@ -161,5 +161,5 @@ spec:
       - gogs
       from:
         kind: ImageStreamTag
-        name: gogs:${GOGS_VERSION}
+        name: gogs:latest
     type: ImageChange
