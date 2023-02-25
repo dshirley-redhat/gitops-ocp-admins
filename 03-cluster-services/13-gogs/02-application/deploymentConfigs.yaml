@@ -33,7 +33,6 @@ spec:
           value: 12MB
         - name: POSTGRESQL_ADMIN_PASSWORD
           value: admin-password
-        image: 'postgresql:9.5'
         livenessProbe:
           initialDelaySeconds: 30
           tcpSocket:
@@ -71,7 +70,7 @@ spec:
       - postgresql
       from:
         kind: ImageStreamTag
-        name: postgresql:9.5
+        name: postgresql:10
         namespace: openshift
     type: ImageChange
   - type: ConfigChange
