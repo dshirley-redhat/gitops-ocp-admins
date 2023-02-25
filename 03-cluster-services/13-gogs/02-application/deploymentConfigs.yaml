@@ -105,8 +105,7 @@ spec:
     spec:
       serviceAccountName: gogs
       containers:
-      - image: " "
-        imagePullPolicy: Always
+      - imagePullPolicy: Always
         name: gogs
         ports:
         - containerPort: 3000
