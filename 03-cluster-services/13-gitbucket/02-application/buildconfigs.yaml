@@ -18,4 +18,4 @@ spec:
       kind: ImageStreamTag
       name: import-repos:latest
   triggers:
-  - type: ImageChange             
+    - type: ConfigChange      
