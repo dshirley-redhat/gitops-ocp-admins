@@ -75,7 +75,7 @@ spec:
               secretKeyRef:
                 name: gitbucket-db
                 key: gitbucket.db.user
-          - name: gitbucket.db.url
+          - name: GITBUCKET_DB_URL
             valueFrom:
               secretKeyRef:
                 name: gitbucket-db
