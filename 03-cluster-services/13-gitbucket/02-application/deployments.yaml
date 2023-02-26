@@ -30,7 +30,7 @@ spec:
         command: ['sh', '-c', '
           curl -L -o h2.jar https://github.com/h2database/h2database/releases/download/version-2.1.214/h2-2.1.214.jar
 
-          #java -cp h2.jar org.h2.tools.Script -url jdbc:h2:/data/gitbucket/data -user sa -script test.zip -options compression zip
+          java -cp h2.jar org.h2.tools.Script -url jdbc:h2:/data/gitbucket/fred -user sa -script test.zip -options compression zip
 
           ls -la
           
