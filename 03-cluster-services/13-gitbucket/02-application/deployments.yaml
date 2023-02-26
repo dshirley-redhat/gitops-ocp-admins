@@ -66,16 +66,9 @@ spec:
           protocol: TCP
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /data/gitbucket
-          name: gitbucket-data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       serviceAccount: gitbucket
       serviceAccountName: gitbucket
       terminationGracePeriodSeconds: 30
-      volumes:
-        - name: gitbucket-data
-          persistentVolumeClaim:
-            claimName: gitbucket-data

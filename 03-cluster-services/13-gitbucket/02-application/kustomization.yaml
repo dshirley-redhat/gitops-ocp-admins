@@ -11,6 +11,5 @@ bases:
   - secrets.yaml
   - services.yaml
   - routes.yaml
-  - pvcs.yaml
   - configMaps.yaml
   - deployments.yaml
