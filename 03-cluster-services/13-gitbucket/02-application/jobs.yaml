@@ -12,9 +12,9 @@ spec:
       - name: import-repos
         image: image-registry.openshift-image-registry.svc:5000/gitbucket/import-repos:latest
         env:
-        - name: import_repos
-          valueFrom:
-            configMapKeyRef:
-              name: gitbucket-config
-              key: import_repos
+          - name: import_repos
+            valueFrom:
+              configMapKeyRef:
+                name: gitbucket-config
+                key: import_repos
       restartPolicy: Never
