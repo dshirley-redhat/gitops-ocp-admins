@@ -15,3 +15,9 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: import-repos
+  namespace: gitbucket
