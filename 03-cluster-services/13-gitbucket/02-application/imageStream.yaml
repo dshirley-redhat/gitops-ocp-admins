@@ -7,10 +7,11 @@ metadata:
 spec:
   tags:
     - name: "4.38.4"
+      annotations:
+        openshift.io/imported-from: quay.io/gitbucket/gitbucket:4.38.4
       from:
         kind: DockerImage
         name: quay.io/gitbucket/gitbucket:4.38.4
-      generation: 2
       importPolicy: {}
       referencePolicy:
         type: Source
