@@ -61,7 +61,7 @@ spec:
         - mountPath: /data/gitbucket
           name: gitbucket-data
       containers:
-      - image: quay.io/central/gitbucket:latest
+      - image: quay.io/gitbucket/gitbucket:4.38.4
         imagePullPolicy: IfNotPresent
         name: gitbucket
         env:
