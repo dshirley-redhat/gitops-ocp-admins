@@ -28,13 +28,13 @@ spec:
       - name: copy-db
         image: registry.redhat.io/ubi8/openjdk-8
         command: ['sh', '-c', '
-          export H2_VERSION=1.4.200
-
-          git
+          export H2_VERSION=1.4.199
 
           curl -L -o h2.jar https://github.com/h2database/h2database/releases/download/version-$H2_VERSION/h2-$H2_VERSION.jar
 
-          java -cp h2.jar org.h2.tools.Script -url $GITBUCKET_DB_URL -user sa -script test.zip -options compression zip
+          java -cp h2.jar org.h2.tools.Script -url $GITBUCKET_DB_URL -user sa -script backup.zip -options compression zip
+
+          #java -cp h2.jar org.h2.tools.Script -url $GITBUCKET_DB_URL -user sa -script test.zip -options compression zip
 
           ls -la
           
