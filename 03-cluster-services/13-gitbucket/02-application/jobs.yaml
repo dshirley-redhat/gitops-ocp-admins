@@ -17,4 +17,19 @@ spec:
               configMapKeyRef:
                 name: gitbucket-config
                 key: import_repos
+          - name: gitbucket_password
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-app
+                key: gitbucket_password
+          - name: gitbucket_user
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-app
+                key: gitbucket_user
+          - name: gitbucket_url
+            valueFrom:
+              secretKeyRef:
+                name: gitbucket-app
+                key: gitbucket_url
       restartPolicy: Never
