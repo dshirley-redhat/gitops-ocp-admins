@@ -32,9 +32,6 @@ spec:
 
           java -cp h2.jar org.h2.tools.Script -url jdbc:h2:/data/gitbucket/data -user sa -script test.zip -options compression zip
 
-          java -cp h2.jar org.h2.tools.Script -url jdbc:h2:/data/gitbucket/data \
-            -script backup.zip -options compression zip
-
           ls -la
           
             #-user ${gitbucket.db.user} -password ${gitbucket.db.password} \
@@ -78,7 +75,7 @@ spec:
               secretKeyRef:
                 name: gitbucket-db
                 key: gitbucket.db.user
-          - name: gitbucket.db.db
+          - name: gitbucket.db.url
             valueFrom:
               secretKeyRef:
                 name: gitbucket-db
