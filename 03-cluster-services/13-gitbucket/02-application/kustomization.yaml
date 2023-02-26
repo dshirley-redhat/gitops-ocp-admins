@@ -4,9 +4,10 @@ kind: Kustomization
 namespace: gitbucket
 
 bases:
-  - buildconfigs.yaml
-  - serviceAccount.yaml
   - imageStream.yaml
+  - buildconfigs.yaml
+  - jobs.yaml
+  - serviceAccount.yaml
   - secrets.yaml
   - services.yaml
   - routes.yaml

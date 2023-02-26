@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: import-repos-job
+spec:
+  selector: {}
+  template:
+    metadata:
+      name: import-repos
+    spec:
+      containers:
+        - name: import-repos
+          image: image-registry.openshift-image-registry.svc:5000/gitbucket/import-repos:latest
+      restartPolicy: Never
