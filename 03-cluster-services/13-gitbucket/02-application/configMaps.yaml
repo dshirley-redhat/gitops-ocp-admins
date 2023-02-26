@@ -7,3 +7,4 @@ metadata:
 data:
   gitbucket.base_url: https://gitbucket.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
   gitbucket.home: /data/gitbucket
+  GITBUCKET_PORT: "8080"
