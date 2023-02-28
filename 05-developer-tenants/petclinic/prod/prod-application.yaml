@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "41"
   labels:
-    gitops.ownedBy: developer-gitops
+    gitops.ownedBy: petclinic-qa
   name: petclinic-prod
 spec:
   destination:

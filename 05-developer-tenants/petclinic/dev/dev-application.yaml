@@ -8,7 +8,7 @@ metadata:
   name: petclinic-dev
 spec:
   destination:
-    namespace: developer-gitops
+    namespace: petclinic-dev
     server: https://kubernetes.default.svc
   project: petclinic
   source:
