@@ -6,6 +6,4 @@ namespace: developer-gitops
 bases:
   - petclinic-project.yaml
   - dev
-  - qa
   - test
-  - prod
