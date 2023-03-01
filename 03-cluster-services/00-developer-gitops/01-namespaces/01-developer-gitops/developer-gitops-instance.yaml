@@ -9,7 +9,7 @@ spec:
   server:
     insecure: true
     route:
-      enabled: false
+      enabled: true
       tls:
         termination: edge
         insecureEdgeTerminationPolicy: Allow
