@@ -16,9 +16,7 @@ spec:
     repoURL: https://gitbucket.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com/git/root/demo-apps.git
     targetRevision: main
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
+    automated: {}
     syncOptions:
       - ApplyOutOfSyncOnly=true
     retry:
