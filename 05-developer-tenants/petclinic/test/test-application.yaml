@@ -12,8 +12,8 @@ spec:
     server: https://kubernetes.default.svc
   project: petclinic
   source:
-    path: 05-developer-tenants/petclinic-test
-    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
+    path: springboot/overlays/dev
+    repoURL: https://gitbucket.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com/git/root/demo-apps.git
     targetRevision: main
   syncPolicy:
     automated:
