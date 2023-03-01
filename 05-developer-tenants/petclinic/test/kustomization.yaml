@@ -5,3 +5,4 @@ namespace: developer-gitops
 
 resources:
   - test-application.yaml
+  - namespace.yaml

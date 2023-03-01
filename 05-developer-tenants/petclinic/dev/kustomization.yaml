@@ -5,3 +5,4 @@ namespace: developer-gitops
 
 resources:
   - dev-application.yaml
+  - namespace.yaml
