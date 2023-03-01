@@ -10,9 +10,9 @@ spec:
     insecure: true
     route:
       enabled: true
-      tls:
-        termination: edge
-        insecureEdgeTerminationPolicy: Allow
+#      tls:
+#        termination: edge
+#        insecureEdgeTerminationPolicy: Allow
   dex:
     openShiftOAuth: true
   resourceCustomizations: |
