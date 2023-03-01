@@ -5,9 +5,7 @@ bases:
   # PetClinic namespaces.
   - petclinic-cicd
   - petclinic-dev
-  - petclinic-qa
   - petclinic-test
-  - petclinic-prod
   #- ../../base/stackrox-cicd-token-generator
 
 patches:
