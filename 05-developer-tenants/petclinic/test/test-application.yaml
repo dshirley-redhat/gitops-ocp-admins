@@ -8,7 +8,7 @@ metadata:
   name: petclinic-test
 spec:
   destination:
-    namespace: developer-gitops
+    namespace: petclinic-test
     server: https://kubernetes.default.svc
   project: petclinic
   source:
