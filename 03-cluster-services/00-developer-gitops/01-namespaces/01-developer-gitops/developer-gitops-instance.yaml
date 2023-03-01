@@ -12,7 +12,7 @@ spec:
       enabled: true
       tls:
         termination: edge
-        insecureEdgeTerminationPolicy: Redirect
+        insecureEdgeTerminationPolicy: Allow
   dex:
     openShiftOAuth: true
   resourceCustomizations: |
