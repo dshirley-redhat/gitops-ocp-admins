@@ -9,3 +9,4 @@ data:
   gitbucket.home: /gitbucket
   GITBUCKET_PORT: "8080"
   import_repos: demo-apps
+  developer_argo_webhook_url: developer-gitops-server-developer-gitops.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com

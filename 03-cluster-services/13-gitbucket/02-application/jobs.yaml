@@ -17,6 +17,11 @@ spec:
               configMapKeyRef:
                 name: gitbucket-config
                 key: import_repos
+          - name: developer_argo_webhook_url
+            valueFrom:
+              configMapKeyRef:
+                name: gitbucket-config
+                key: developer_argo_webhook_url
           - name: gitbucket_password
             valueFrom:
               secretKeyRef:
