@@ -1,0 +1,7 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: gogs-openshift-docker
+spec:
+  lookupPolicy:
+    local: false

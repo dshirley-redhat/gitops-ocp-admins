@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - builds.yaml
+  - imageStreams.yaml
   - pvcs.yaml
   - configMaps.yaml
   - services.yaml
