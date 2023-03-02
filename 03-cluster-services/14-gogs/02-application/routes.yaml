@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    description: Route for application's http service.
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  host: gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
+  to:
+    kind: Service
+    name: gogs
+    weight: 100
+  wildcardPolicy: None

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    description: The Gogs server's http port
+    openshift.io/generated-by: OpenShiftNewApp
+    service.alpha.openshift.io/dependencies: '[{"name":"gogs-postgresql","namespace":"","kind":"Service"}]'
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 3000-tcp
+    port: 3000
+  selector:
+    app: gogs
+    deploymentconfig: gogs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}
+  labels:
+    template: postgresql-persistent-template
+    template.openshift.io/template-instance-owner: f9cae97f-2efc-4572-b366-7b9ae8419d4e
+  name: postgresql
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: postgresql
+    port: 5432
+  selector:
+    name: postgresql
