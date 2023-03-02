@@ -101,7 +101,7 @@ spec:
       from:
         kind: ImageStreamTag
         name: gogs-openshift-docker:latest
-        namespace: gogs
+        namespace: gogs-test
     type: ImageChange
 ---
 apiVersion: apps.openshift.io/v1
