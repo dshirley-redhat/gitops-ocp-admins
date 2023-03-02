@@ -7,7 +7,7 @@ metadata:
     app: gogs
   name: gogs
 spec:
-  host: gogs.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
+  host: gogs-test.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
   to:
     kind: Service
     name: gogs
