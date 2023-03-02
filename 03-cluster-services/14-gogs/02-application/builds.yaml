@@ -20,7 +20,7 @@ spec:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: centos:7
+        name: quay.io/centos/centos:7
     type: Docker
   successfulBuildsHistoryLimit: 5
   triggers:
