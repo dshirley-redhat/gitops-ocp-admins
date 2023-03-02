@@ -29,4 +29,3 @@ spec:
       secret: 9O79BE0liHcdVHsmK9v0
     type: Generic
   - type: ConfigChange
-  - type: ImageChange
