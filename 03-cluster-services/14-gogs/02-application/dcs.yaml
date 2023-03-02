@@ -42,7 +42,6 @@ spec:
           value: gogsadmin@fabric8.local
         - name: ADMIN_USER_PASSWORD
           value: admin123
-        image: image-registry.openshift-image-registry.svc:5000/gogs/gogs-openshift-docker@sha256:5a25070ed6224e0ed5957257526bcd8d5c441516c4b4f7a7a0f1ea7c60bad8e1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 10
@@ -146,7 +145,6 @@ spec:
             secretKeyRef:
               key: database-name
               name: postgresql
-        image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:1d89de24e9c9ab6245b3ce0a6da28e8b5c930c5e8b877c9bc4df91bb7cbf6389
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
