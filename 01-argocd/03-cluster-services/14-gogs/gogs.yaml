@@ -12,8 +12,8 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/14-gogs
-    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
+    path: app/overlays/test
+    repoURL: https://github.com/dshirley-redhat/gogs-openshift-docker.git
     targetRevision: main
   syncPolicy:
     automated: {}
