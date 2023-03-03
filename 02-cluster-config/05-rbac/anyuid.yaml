@@ -11,8 +11,5 @@ subjects:
   name: gogs
   namespace: gogs
 - kind: ServiceAccount
-  name: gogs
-  namespace: gogs-test
-- kind: ServiceAccount
   name: gitbucket
   namespace: gitbucket
