@@ -23,7 +23,7 @@ Login to the new cluster as a `cluster-admin` user and run:
 ```
 oc apply -k bootstrap/nonprod
 
-
+sleep 5
 INSTALL_PLAN=$(oc get installplan -n openshift-operators -o json | jq -r '.items[] | select(.spec.clusterServiceVersionNames[] | test("openshift-gitops-operator")).metadata.name')
 
 
@@ -31,6 +31,7 @@ oc patch installplan/$INSTALL_PLAN \
     --type merge \
     -p '{"spec":{"approved":true}}' -n openshift-operators
 
+sleep 10
 oc apply -k 01-argocd/01-clusters/nonprod/00-bootstrap
 ```
 
