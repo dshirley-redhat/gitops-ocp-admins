@@ -31,7 +31,7 @@ oc patch installplan/$INSTALL_PLAN \
     --type merge \
     -p '{"spec":{"approved":true}}' -n openshift-operators
 
-sleep 10
+sleep 30
 oc apply -k 01-argocd/01-clusters/nonprod/00-bootstrap
 ```
 
