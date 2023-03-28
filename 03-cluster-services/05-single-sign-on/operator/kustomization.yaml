@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: sso
 
 bases:
-  - https://github.com/pittar/gitops-catalog/rhsso/rhsso-operator/overlays/default
+  - https://github.com/redhat-cop/gitops-catalog/rhsso/rhsso-operator/overlays/default
 #  - https://github.com/pittar/gitops-catalog/rhsso/rhsso-instance/base
 
 resources:
