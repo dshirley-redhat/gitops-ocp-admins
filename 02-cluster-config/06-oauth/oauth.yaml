@@ -17,6 +17,8 @@ spec:
         clientID: openshift
         clientSecret: 
           name: openid-client-secret
+        ca: 
+          name: openidcacrt
         extraScopes: 
         - email
         - profile
