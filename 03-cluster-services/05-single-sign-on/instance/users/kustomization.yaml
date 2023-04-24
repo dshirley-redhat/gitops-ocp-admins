@@ -5,3 +5,4 @@ namespace: sso
 
 resources:
   - derek-user.yaml
+  - derek-user-credential.yaml
