@@ -10,3 +10,29 @@ spec:
       mappingMethod: claim
       name: htpasswd
       type: HTPasswd
+  - name: rhsso
+    mappingMethod: claim
+    type: OpenID
+    openID:
+      clientID: openshift
+      clientSecret: 
+        name: openid-client-secret
+      ca: 
+        name: openidcacrt
+      extraScopes: 
+      - email
+      - profile
+      extraAuthorizeParameters: 
+        include_granted_scopes: "true"
+      claims:
+        preferredUsername: 
+        - preferred_username
+        - email
+        name: 
+        - nickname
+        - given_name
+        - name
+        email: 
+        - custom_email_claim
+        - email
+      issuer: https://keycloak-sso.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com
