@@ -17,4 +17,4 @@ spec:
     implicitFlowEnabled: false
     directAccessGrantsEnabled: true
     redirectUris: 
-        - "https://keycloak.sso.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com/auth/realms/master/protocol/openid-connect/token"
+      - "https://oauth-openshift.apps.dshirley1ipi.vmware.tamlab.rdu2.redhat.com/oauth2callback/rhsso"
