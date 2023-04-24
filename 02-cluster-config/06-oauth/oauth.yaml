@@ -22,6 +22,7 @@ spec:
         extraScopes: 
         - email
         - profile
+        - openid
         extraAuthorizeParameters: 
           include_granted_scopes: "true"
         claims:
