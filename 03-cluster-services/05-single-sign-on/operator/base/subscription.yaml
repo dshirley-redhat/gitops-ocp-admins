@@ -4,7 +4,7 @@ metadata:
   name: rhsso-operator
   namespace: sso
 spec:
-  channel: alpha
+  channel: stable
   installPlanApproval: Manual
   name: rhsso-operator
   source: redhat-operators
