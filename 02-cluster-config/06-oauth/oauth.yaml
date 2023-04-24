@@ -19,6 +19,8 @@ spec:
           name: openid-client-secret
         ca: 
           name: openidcacrt
+        extraScopes: 
+        - email
         extraAuthorizeParameters: 
           include_granted_scopes: "true"
         claims:
