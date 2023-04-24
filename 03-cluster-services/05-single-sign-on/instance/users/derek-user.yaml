@@ -1,8 +1,6 @@
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakUser
 metadata:
-  finalizers:
-  - user.cleanup
   labels:
     app: sso
   name: derek-user
