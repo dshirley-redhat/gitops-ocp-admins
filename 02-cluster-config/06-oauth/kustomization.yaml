@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources: 
+ - create-openid-ca-crt.yaml
  - oauth.yaml
  - htpasswd.yaml
  - v4-0-config-user-idp-0-file-data.yaml

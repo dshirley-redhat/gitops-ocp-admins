@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-openid-ca-crt
+  namespace: openshift-config
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - image: registry.redhat.io/openshift-gitops-1/argocd-rhel8:v1.5.0
+        command:
+          - /bin/bash
+          - -c
+          - |
+            HAS_SECRET=$(kubectl get secret $SECRET_NAME -n $TARGET_NAMESPACE --ignore-not-found)
+            if [ -z "$HAS_SECRET" ];
+            then
+              echo "No $SECRET_NAME present, creating"
+
+              # Get name of certs secret.  It can be router-certs or router-certs-default.
+              CERT_SECRET=$(oc get secrets -n openshift-ingress | grep 'router-certs\|ingress-certs\|-ingress' | cut -d ' ' -f1)
+
+              # Get the certificate.
+              tlscert=`oc get secrets/$CERT_SECRET -o jsonpath={.data.'tls\.crt'} -n openshift-ingress | base64 --decode`
+
+              # Create a ConfigMap in the openshift-config namespace that contains the ingress certificate.
+              oc create configmap $SECRET_NAME --from-literal ca.crt="$tlscert" -n $TARGET_NAMESPACE
+
+            else
+              echo "The secret $SECRET_NAME already exists, skipping"
+            fi
+        env:
+        # The CICD namespace where the token needs to be deployed to
+        - name: TARGET_NAMESPACE
+          value: "openshift-config"
+        - name: SECRET_NAME
+          value: "openidcacrt"
+        imagePullPolicy: Always
+        name: create-openid-ca-crt
+      serviceAccount: openshift-gitops-argocd-application-controller
+      serviceAccountName: openshift-gitops-argocd-application-controller
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      terminationGracePeriodSeconds: 30
