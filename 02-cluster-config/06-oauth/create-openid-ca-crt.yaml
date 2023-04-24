@@ -33,7 +33,7 @@ spec:
               echo "The configmap $CONFIGMAP_NAME already exists, skipping"
             fi
 
-            HAS_SECRET=$(kubectl get configmap $SECRET_NAME -n $TARGET_NAMESPACE --ignore-not-found)
+            HAS_SECRET=$(kubectl get secret $SECRET_NAME -n $TARGET_NAMESPACE --ignore-not-found)
             if [ -z "$HAS_SECRET" ];
             then
               echo "No $SECRET_NAME present, creating"
