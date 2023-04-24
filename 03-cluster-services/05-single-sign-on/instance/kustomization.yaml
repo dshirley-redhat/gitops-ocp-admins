@@ -8,3 +8,5 @@ resources:
   - openshift-client.yaml
   - openshift-realm.yaml
   - users
+  - create-client-secret.yaml
+  - create-openid-ca-crt.yaml
