@@ -52,9 +52,9 @@ spec:
           value: "openidcacrt"
         - name: SECRET_NAME
           value: "openid-client-secret"
+          #this value should match the one in the KeycloakClient
         - name: CLIENT_SECRET
           value: "5e9326ee-ac8d-40bf-9060-e91dbe9d9000"
-          comment: "this value should match the one in the KeycloakClient"
         imagePullPolicy: Always
         name: create-openid-ca-crt
       serviceAccount: openshift-gitops-argocd-application-controller
