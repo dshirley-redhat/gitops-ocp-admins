@@ -39,7 +39,7 @@ spec:
               echo "No $SECRET_NAME present, creating"
 
               # Create a Secret in the openshift-config namespace that contains the keycloak client secret.
-              oc create secret $SECRET_NAME --from-literal clientSecret="$CLIENT_SECRET" -n $TARGET_NAMESPACE
+              oc create secret generic $SECRET_NAME --from-literal=clientSecret="$CLIENT_SECRET" -n $TARGET_NAMESPACE
 
             else
               echo "The secret $SECRET_NAME already exists, skipping"
