@@ -1,0 +1,21 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  finalizers:
+  - user.cleanup
+  labels:
+    app: sso
+  name: derek-user
+spec:
+  realmSelector:
+    matchLabels:
+      app: sso
+  user:
+    email: dshirley@redhat.com
+    emailVerified: true
+    enabled: true
+    firstName: Derek
+    lastName: Shirley
+    realmRoles:
+    - realm-management
+    username: derek
