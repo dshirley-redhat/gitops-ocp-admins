@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: sso
 
 resources:
+  - operator-instance.yaml
   - openshift-client.yaml
   - openshift-realm.yaml
   - users
