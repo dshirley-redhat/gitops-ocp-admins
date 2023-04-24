@@ -7,7 +7,7 @@ metadata:
 spec:
   realmSelector:
     matchLabels:
-      app: sso
+      app: openshift
   user:
     email: dshirley@redhat.com
     emailVerified: true
@@ -16,4 +16,9 @@ spec:
     lastName: Shirley
     realmRoles:
     - realm-management
+    clientRoles:
+      account:
+        - "manage-account"
+      realm-management:
+        - "manage-users"
     username: derek
