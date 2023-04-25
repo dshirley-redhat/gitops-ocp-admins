@@ -2,17 +2,17 @@ kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "35"
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: rhsso-operator-instance
+  name: rhsso-operator
 spec:
   destination:
     namespace: openshift-operators
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/05-single-sign-on
+    path: 03-cluster-services/05-single-sign-on/operator
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
