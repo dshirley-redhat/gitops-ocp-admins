@@ -10,6 +10,9 @@ spec:
       app: openshift
   user:
     email: dshirley@redhat.com
+    credentials:
+      - type: password
+        value: p
     emailVerified: true
     enabled: true
     firstName: Derek
