@@ -8,3 +8,4 @@ resources:
   - openshift-client.yaml
   - openshift-realm.yaml
   - users
+  - jobs
