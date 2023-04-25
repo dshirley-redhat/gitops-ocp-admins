@@ -1,0 +1,27 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  labels:
+    app: sso
+  name: test-user
+spec:
+  realmSelector:
+    matchLabels:
+      app: openshift
+  user:
+    email: dshirley@redhat.com
+    credentials:
+      - type: password
+        value: p
+    emailVerified: true
+    enabled: true
+    firstName: test
+    lastName: test
+    realmRoles:
+    - realm-management
+    clientRoles:
+      account:
+        - "manage-account"
+      realm-management:
+        - "manage-users"
+    username: test
