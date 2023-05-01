@@ -6,6 +6,7 @@ metadata:
   labels:
     gitops.ownedBy: openshift-gitops
   name: node-configs
+  namespace: openshift-gitops
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -14,6 +15,11 @@ spec:
     path: 02-cluster-config/07-node-configs
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
+    directory:
+      jsonnet:
+        extVars:
+          - name: CLUSTER_NAME
+            value: 
   syncPolicy:
     automated: {}
     syncOptions:
