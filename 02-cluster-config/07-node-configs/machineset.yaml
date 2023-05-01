@@ -1,0 +1,52 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/memoryMb: "16384"
+    machine.openshift.io/vCPU: "4"
+  labels:
+    machine.openshift.io/cluster-api-cluster: dshirley1ipi-${CLUSTER_NAME}
+  name: dshirley1ipi-infra
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: dshirley1ipi-${CLUSTER_NAME}
+      machine.openshift.io/cluster-api-machineset: dshirley1ipi-infra
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: dshirley1ipi-${CLUSTER_NAME}
+        machine.openshift.io/cluster-api-machine-role: infra
+        machine.openshift.io/cluster-api-machine-type: infra
+        machine.openshift.io/cluster-api-machineset: dshirley1ipi-infra
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/infra: ""
+      providerSpec:
+        value:
+          apiVersion: machine.openshift.io/v1beta1
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          diskGiB: 120
+          kind: VSphereMachineProviderSpec
+          memoryMiB: 16384
+          metadata:
+            creationTimestamp: null
+          network:
+            devices:
+            - networkName: TAMLAB_192
+          numCPUs: 4
+          numCoresPerSocket: 4
+          snapshot: ""
+          template: dshirley1ipi-${CLUSTER_NAME}-rhcos
+          userDataSecret:
+            name: worker-user-data
+          workspace:
+            datacenter: Datacenter
+            datastore: vsanDatastore
+            folder: /Datacenter/vm/dshirley1ipi-${CLUSTER_NAME}
+            resourcePool: /Datacenter/host/tamlab/Resources
+            server: vcsa.vmware.tamlab.rdu2.redhat.com
