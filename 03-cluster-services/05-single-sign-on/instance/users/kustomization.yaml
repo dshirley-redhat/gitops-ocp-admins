@@ -5,4 +5,4 @@ namespace: sso
 
 resources:
   - derek-user.yaml
-  - test-user.yaml
+  #- test-user.yaml
