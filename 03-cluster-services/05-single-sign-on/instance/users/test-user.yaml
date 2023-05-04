@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: openshift
   user:
-    email: dshirley@redhat.com
+    email: dshirley-test@redhat.com
     credentials:
       - type: password
         value: p
