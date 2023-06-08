@@ -68,7 +68,7 @@ spec:
         memory: 2Gi
   nodes:
     - nodeCount: 3
-      genUUID: hardcodedUUIDNumber
+      genUUID: 12fqwef
       proxyResources: {}
       resources: {}
       roles:
