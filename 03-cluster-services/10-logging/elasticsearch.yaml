@@ -6,11 +6,6 @@ metadata:
     logging.openshift.io/elasticsearch-cert.collector: system.logging.fluentd
   name: elasticsearch
   namespace: openshift-logging
-  ownerReferences:
-    - apiVersion: logging.openshift.io/v1
-      controller: true
-      kind: ClusterLogging
-      name: instance
 spec:
   indexManagement:
     mappings:
