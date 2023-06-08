@@ -5,6 +5,7 @@ namespace: openshift-gitops
 
 bases:
   - ../../../03-cluster-services/00-developer-gitops
+  - ../../../03-cluster-services/10-logging
   - ../../../03-cluster-services/11-cicd-tools
   - ../../../03-cluster-services/12-image-registry
   - ../../../03-cluster-services/13-gitbucket

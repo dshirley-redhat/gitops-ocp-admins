@@ -1,0 +1,84 @@
+apiVersion: logging.openshift.io/v1
+kind: Elasticsearch
+metadata:
+  annotations:
+    logging.openshift.io/elasticsearch-cert-management: 'true'
+    logging.openshift.io/elasticsearch-cert.collector: system.logging.fluentd
+  name: elasticsearch
+  namespace: openshift-logging
+  ownerReferences:
+    - apiVersion: logging.openshift.io/v1
+      controller: true
+      kind: ClusterLogging
+      name: instance
+spec:
+  indexManagement:
+    mappings:
+      - aliases:
+          - app
+          - logs.app
+        name: app
+        policyRef: app-policy
+      - aliases:
+          - infra
+          - logs.infra
+        name: infra
+        policyRef: infra-policy
+      - aliases:
+          - audit
+          - logs.audit
+        name: audit
+        policyRef: audit-policy
+    policies:
+      - name: app-policy
+        phases:
+          delete:
+            minAge: 7d
+            pruneNamespacesInterval: 30m
+          hot:
+            actions:
+              rollover:
+                maxAge: 8h
+        pollInterval: 15m
+      - name: infra-policy
+        phases:
+          delete:
+            minAge: 7d
+            pruneNamespacesInterval: 30m
+          hot:
+            actions:
+              rollover:
+                maxAge: 8h
+        pollInterval: 15m
+      - name: audit-policy
+        phases:
+          delete:
+            minAge: 7d
+            pruneNamespacesInterval: 30m
+          hot:
+            actions:
+              rollover:
+                maxAge: 8h
+        pollInterval: 15m
+  managementState: Managed
+  nodeSpec:
+    proxyResources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    resources:
+      requests:
+        memory: 2Gi
+  nodes:
+    - nodeCount: 3
+      proxyResources: {}
+      resources: {}
+      roles:
+        - client
+        - data
+        - master
+      storage:
+        size: 200G
+  redundancyPolicy: SingleRedundancy
