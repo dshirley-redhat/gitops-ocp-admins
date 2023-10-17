@@ -3,21 +3,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 
 namespace: openshift-gitops
 
-bases:
+resources:
   - ../../../02-cluster-config/01-openshift-gitops
   - ../../../02-cluster-config/02-groups-and-membership
   - ../../../02-cluster-config/03-cluster-monitoring
   - ../../../02-cluster-config/05-rbac
   - ../../../02-cluster-config/06-oauth
-
-resources:
   - cluster-config-project.yaml
 
 patches:
 - target:
-    kind: OAuth
-    name: cluster
+    kind: Application
+    name: oauth
   patch: |-
     - op: add
-      path: /spec/identityProviders/0/openID/issuer
-      value: https://keycloak-sso.apps.dshirley1sno.vmware.tamlab.rdu2.redhat.com/auth/realms/openshift
+      path: /spec/source/path
+      value: 02-cluster-config/06-oauth
