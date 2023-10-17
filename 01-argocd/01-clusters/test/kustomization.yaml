@@ -7,7 +7,6 @@ resources:
 - 03-tenants
 - ../../05-developer-tenants
 
-
 patches:
 - target:
     kind: Application
