@@ -23,8 +23,8 @@ Login to the new cluster as a `cluster-admin` user and run:
 ```
 oc login --username=kubeadmin
 
-
-oc apply -k bootstrap/nonprod
+cluster=test
+oc apply -k bootstrap/$cluster
 
 sleep 60
 
@@ -32,41 +32,11 @@ oc patch Subscription/openshift-gitops-operator \
     --type merge \
     -p '{"spec":{"installPlanApproval":"Manual"}}' -n openshift-operators
 
-oc apply -k 01-argocd/01-clusters/nonprod/00-bootstrap
+oc apply -k 01-argocd/01-clusters/$cluster/00-bootstrap
+
 
 watch 'oc get clusterversion && oc get mcp && oc get co && oc get nodes'
 
-
-oc create secret tls dshirley1ipi-api \
-     --cert=/home/dshirley/dshirley1ipi/api.dshirley1ipi.crt \
-     --key=/home/dshirley/dshirley1ipi/api.dshirley1ipi.key \
-     -n openshift-config
-
-oc patch apiserver cluster \
-     --type=merge -p \
-     '{"spec":{"servingCerts": {"namedCertificates":
-     [{"names": ["api.dshirley1ipi.vmware.tamlab.rdu2.redhat.com"], 
-     "servingCertificate": {"name": "dshirley1ipi-api"}}]}}}'
-
-
-
-oc create configmap custom-ca \
-     --from-file=ca-bundle.crt=/home/dshirley/dshirley1ipi/root-ca.crt \
-     -n openshift-config
-
-oc patch proxy/cluster \
-     --type=merge \
-     --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}'
-
-oc create secret tls dshirley1ipi-apps \
-     --cert=/home/dshirley/dshirley1ipi/apps.dshirley1ipi.crt \
-     --key=/home/dshirley/dshirley1ipi/apps.dshirley1ipi.key \
-     -n openshift-ingress
-
-oc patch ingresscontroller.operator default \
-     --type=merge -p \
-     '{"spec":{"defaultCertificate": {"name": "dshirley1ipi-apps"}}}' \
-     -n openshift-ingress-operator
     
 ```
 

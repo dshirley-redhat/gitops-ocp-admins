@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: cluster-bootstrap
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  name: cluster-bootstrap
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: cluster-bootstrap
+  source:
+    path: 01-argocd/01-clusters/nonprod
+    repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 10m
+      limit: 5
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
