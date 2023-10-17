@@ -6,3 +6,20 @@ resources:
 - 02-cluster-services
 - 03-tenants
 - ../../05-developer-tenants
+
+
+patches:
+- target:
+    kind: Application
+    name: oauth
+  patch: |-
+    - op: add
+      path: /spec/source/path
+      value: 02-cluster-config/06-oauth/test
+- target:
+    kind: Application
+    name: rhsso-operator-instance
+  patch: |-
+    - op: add
+      path: /spec/source/path
+      value: 03-cluster-services/05-single-sign-on/instance/test

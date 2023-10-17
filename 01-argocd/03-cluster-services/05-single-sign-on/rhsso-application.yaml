@@ -12,7 +12,6 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/05-single-sign-on/instance
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
