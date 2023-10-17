@@ -12,3 +12,12 @@ bases:
 
 resources:
   - cluster-config-project.yaml
+
+patches:
+- target:
+    kind: Application
+    name: oauth
+  patch: |-
+    - op: add
+      path: /spec/source/path
+      value: 02-cluster-config/06-oauth/nonprod
