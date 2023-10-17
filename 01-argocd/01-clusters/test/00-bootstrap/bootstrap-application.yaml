@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-bootstrap
   source:
-    path: 01-argocd/01-clusters/nonprod
+    path: 01-argocd/01-clusters/test
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
