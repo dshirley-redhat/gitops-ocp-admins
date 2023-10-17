@@ -18,4 +18,4 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/path
-      value: 02-cluster-config/06-oauth
+      value: 02-cluster-config/06-oauth/test
