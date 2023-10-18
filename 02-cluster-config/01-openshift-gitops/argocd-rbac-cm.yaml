@@ -6,6 +6,7 @@ metadata:
 data:
   policy.csv: |
     g, system:cluster-admins, role:admin
+    g, cluster-admins, role:admin
     g, openshift-cluster-admins, role:admin
   policy.default: 'role:noaccess'
   scopes: '[groups]'
