@@ -15,6 +15,13 @@ spec:
         insecureEdgeTerminationPolicy: Allow
   dex:
     openShiftOAuth: true
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
   resourceCustomizations: |
     route.openshift.io/Route:
       ignoreDifferences: |
