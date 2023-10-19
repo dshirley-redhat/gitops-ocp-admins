@@ -5,7 +5,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "40"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: common-tools-argocd
+  name: developer-gitops
 spec:
   destination:
     namespace: developer-gitops
