@@ -108,8 +108,8 @@ spec:
         memory: 1Gi
     sharding: {}
   rbac:
-    policy.csv: |
+    policy: |
       g, system:cluster-admins, role:admin
       g, openshift-cluster-admins, role:admin
-    policy.default: 'role:noaccess'
+    defaultPolicy: 'role:noaccess'
     scopes: '[groups]'
