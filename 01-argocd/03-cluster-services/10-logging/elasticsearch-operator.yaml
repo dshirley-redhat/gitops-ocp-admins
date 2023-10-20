@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/10-logging/elasticsearch/instance
+    path: 03-cluster-services/10-logging/elasticsearch/operator
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
