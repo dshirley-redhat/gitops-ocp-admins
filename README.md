@@ -23,7 +23,7 @@ Login to the new cluster as a `cluster-admin` user and run:
 ```
 oc login --username=kubeadmin
 
-cluster=test
+cluster=nonprod
 oc apply -k bootstrap/$cluster
 
 sleep 60

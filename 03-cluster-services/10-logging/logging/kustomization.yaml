@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - openshift-logging-ns.yaml
   - openshift-logging-sub.yaml
-  - operator-group.yaml
+  #- operator-group.yaml
