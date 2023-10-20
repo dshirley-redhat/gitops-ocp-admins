@@ -6,7 +6,7 @@ metadata:
   labels:
     operators.coreos.com/elasticsearch-operator.openshift-operators-redhat: ''
   name: elasticsearch-operator
-  namespace: openshift-operators-redhat
+  namespace: cluster-logging
 spec:
   channel: stable
   installPlanApproval: Automatic
