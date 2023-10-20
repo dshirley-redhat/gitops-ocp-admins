@@ -6,5 +6,5 @@ namespace: openshift-logging
 resources:
   - logging-operator.yaml
   - elasticsearch-operator.yaml
-  - logging-instance.yaml
+  #- logging-instance.yaml
   - elasticsearch-instance.yaml
