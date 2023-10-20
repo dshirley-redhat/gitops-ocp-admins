@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: "openshift-operators-redhat"
+    openshift.io/display-name: "openshift-operators-redhat"
+  name: openshift-operators-redhat
