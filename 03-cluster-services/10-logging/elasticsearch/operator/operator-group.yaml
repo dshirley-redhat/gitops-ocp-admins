@@ -3,7 +3,7 @@ kind: OperatorGroup
 metadata:
   annotations:
   name: elasticsearch-operator
-  namespace: openshift-logging
+  namespace: openshift-operators-redhat
 spec:
   targetNamespaces:
     - openshift-logging
