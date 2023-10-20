@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - elasticsearch-operator-sub.yaml
-  - elasticsearch.yaml
+#  - elasticsearch.yaml
