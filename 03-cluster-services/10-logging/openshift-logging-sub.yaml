@@ -4,7 +4,6 @@ metadata:
   labels:
     operators.coreos.com/cluster-logging.openshift-logging: ''
   name: cluster-logging
-  namespace: openshift-logging
 spec:
   channel: stable
   installPlanApproval: Automatic
