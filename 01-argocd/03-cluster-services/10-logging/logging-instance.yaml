@@ -5,14 +5,14 @@ metadata:
     argocd.argoproj.io/sync-wave: "38"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: cluster-logging
+  name: cluster-logging-operator
 spec:
   destination:
     namespace: openshift-operators
     server: https://kubernetes.default.svc
   project: cluster-services
   source:
-    path: 03-cluster-services/10-logging
+    path: 03-cluster-services/10-logging/logging/operator
     repoURL: https://github.com/dshirley-redhat/gitops-ocp-admins.git
     targetRevision: main
   syncPolicy:
