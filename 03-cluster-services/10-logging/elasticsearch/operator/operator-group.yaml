@@ -1,0 +1,9 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+  name: elasticsearch-operator
+  namespace: openshift-logging
+spec:
+  targetNamespaces:
+    - openshift-logging
