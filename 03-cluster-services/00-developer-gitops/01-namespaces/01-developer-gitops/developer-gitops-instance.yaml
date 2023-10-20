@@ -63,3 +63,9 @@ spec:
       kinds:
       - ComplianceCheckResult
       - ComplianceRemediation
+  rbac:
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, openshift-cluster-admins, role:admin
+    defaultPolicy: 'role:noaccess'
+    scopes: '[groups]'
