@@ -4,6 +4,7 @@ metadata:
   annotations:
     logging.openshift.io/elasticsearch-cert-management: 'true'
     logging.openshift.io/elasticsearch-cert.collector: system.logging.fluentd
+    argocd.argoproj.io/sync-wave: "1"
   name: elasticsearch
   namespace: openshift-logging
 spec:
