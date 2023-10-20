@@ -3,7 +3,7 @@ kind: OperatorGroup
 metadata:
   annotations:
   name: cluster-logging
-  namespace: openshift-operators
+  namespace: openshift-logging
 spec:
   targetNamespaces:
     - openshift-logging
