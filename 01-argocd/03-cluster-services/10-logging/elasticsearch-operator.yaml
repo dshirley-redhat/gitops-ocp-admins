@@ -5,7 +5,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "38"
   labels:
     gitops.ownedBy: openshift-gitops
-  name: elasticsearch-instance
+  name: elasticsearch-operator
 spec:
   destination:
     namespace: openshift-operators
