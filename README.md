@@ -10,7 +10,7 @@ The reason I have gone with a ["mono repo" approach](https://blog.argoproj.io/5-
 
 This repository is *not* meant to be reproduced in environments other than my own.  Since I'm using [Bitnami Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets), any component in this demo that depends on a secret (e.g. image pull secret or GitHub token) will onl work if the Sealed Secrets operator is seeded with my key (which is not in this repository).
 
-The following documents the steps I take to bootstrap and configure one of my own clusters.
+The following documents the steps I take to bootstrap and configure one of my own clusters. 
 
 ## Bootstrap
 
