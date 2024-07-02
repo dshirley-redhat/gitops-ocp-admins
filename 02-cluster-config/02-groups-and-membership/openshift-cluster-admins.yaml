@@ -4,4 +4,4 @@ metadata:
   name: openshift-cluster-admins
 users:
   - derek
-  - jenkins
+  - system:serviceaccount:cicd-tools:jenkins

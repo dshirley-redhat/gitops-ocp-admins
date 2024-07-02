@@ -28,12 +28,15 @@ oc apply -k bootstrap/$cluster
 
 sleep 60
 
-oc patch Subscription/openshift-gitops-operator \
+oc patch sub/openshift-gitops-operator \
     --type merge \
     -p '{"spec":{"installPlanApproval":"Manual"}}' -n openshift-operators
 
 oc apply -k 01-argocd/01-clusters/$cluster/00-bootstrap
 
+sleep 30 
+
+bootstrap/nonprod/cluster-certs/applyClusterCerts.sh bootstrap/nonprod/cluster-certs/
 
 watch 'oc get clusterversion && oc get mcp && oc get co && oc get nodes'
 
