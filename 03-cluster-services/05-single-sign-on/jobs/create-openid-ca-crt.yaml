@@ -16,27 +16,41 @@ spec:
           - /bin/bash
           - -c
           - |
-            HAS_CONFIGMAP=$(kubectl get configmap $CONFIGMAP_NAME -n $TARGET_NAMESPACE --ignore-not-found)
+            HAS_CONFIGMAP=$(kubectl get configmap/$CONFIGMAP_NAME -n $TARGET_NAMESPACE --ignore-not-found)
+            if [ -n "$HAS_CONFIGMAP" ];
+            then
+              echo "$CONFIGMAP_NAME present, checking the content"
+
+              exstingCaCrt=`oc get configmap/$CONFIGMAP_NAME -n $TARGET_NAMESPACE -o jsonpath={.data.'ca\.crt'}`
+              
+              if [ -z "$exstingCaCrt" ];
+              then
+                HAS_CONFIGMAP=""
+                echo "Configmap is missing the cert, deleting"
+                oc delete configmap/$CONFIGMAP_NAME -n $TARGET_NAMESPACE
+              fi
+            fi
+
             if [ -z "$HAS_CONFIGMAP" ];
             then
-              echo "No $CONFIGMAP_NAME present, creating"
+            echo "No $CONFIGMAP_NAME present, creating"
 
-              # Get name of certs secret.  It can be router-certs or router-certs-default.
-              CERT_SECRET=$(oc get secrets -n openshift-ingress | grep 'mycert' | cut -d ' ' -f1)
-              #CERT_SECRET=$(oc get secrets -n openshift-ingress | grep 'router-certs\|ingress-certs\|-ingress' | cut -d ' ' -f1)
+            # Get name of certs secret.  It can be router-certs or router-certs-default.
+            CERT_SECRET=$(oc get secrets -n openshift-ingress | grep 'mycert' | cut -d ' ' -f1)
+            #CERT_SECRET=$(oc get secrets -n openshift-ingress | grep 'router-certs\|ingress-certs\|-ingress' | cut -d ' ' -f1)
 
-              echo "Found cert secret $CERT_SECRET"
-              
-              # Get the certificate.
-              tlscert=`oc get secrets/$CERT_SECRET -o jsonpath={.data.'tls\.crt'} -n openshift-ingress | base64 --decode`
+            echo "Found cert secret $CERT_SECRET"
+            
+            # Get the certificate.
+            tlscert=`oc get secrets/$CERT_SECRET -o jsonpath={.data.'tls\.crt'} -n openshift-ingress | base64 --decode`
 
-              # Create a ConfigMap in the openshift-config namespace that contains the ingress certificate.
-              oc create configmap $CONFIGMAP_NAME --from-literal ca.crt="$tlscert" -n $TARGET_NAMESPACE
-
-              sleep 60
+            # Create a ConfigMap in the openshift-config namespace that contains the ingress certificate.
+            oc create configmap $CONFIGMAP_NAME --from-literal ca.crt="$tlscert" -n $TARGET_NAMESPACE
             else
               echo "The configmap $CONFIGMAP_NAME already exists, skipping"
             fi
+            
+            sleep 60
         env:
         # The CICD namespace where the token needs to be deployed to
         - name: TARGET_NAMESPACE
