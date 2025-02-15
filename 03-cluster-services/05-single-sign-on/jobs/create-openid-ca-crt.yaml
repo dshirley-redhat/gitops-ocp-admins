@@ -29,6 +29,7 @@ spec:
               # Create a ConfigMap in the openshift-config namespace that contains the ingress certificate.
               oc create configmap $CONFIGMAP_NAME --from-literal ca.crt="$tlscert" -n $TARGET_NAMESPACE
 
+              sleep 60
             else
               echo "The configmap $CONFIGMAP_NAME already exists, skipping"
             fi
