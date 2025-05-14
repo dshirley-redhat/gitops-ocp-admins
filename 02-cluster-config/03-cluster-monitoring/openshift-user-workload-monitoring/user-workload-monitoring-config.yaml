@@ -8,7 +8,7 @@ data:
     prometheus: 
       volumeClaimTemplate:
         spec:
-          storageClassName: thin
+          storageClassName: thin-csi
           volumeMode: Filesystem
           resources:
             requests:
