@@ -59,6 +59,13 @@ spec:
           value: "jenkins"
         imagePullPolicy: Always
         name: create-local-user-job
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
       serviceAccount: openshift-gitops-argocd-application-controller
       serviceAccountName: openshift-gitops-argocd-application-controller
       dnsPolicy: ClusterFirst
