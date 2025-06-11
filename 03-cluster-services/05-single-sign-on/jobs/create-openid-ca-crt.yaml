@@ -59,6 +59,8 @@ spec:
           value: "openidcacrt"
         imagePullPolicy: Always
         name: create-openid-ca-crt
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccount: openshift-gitops-argocd-application-controller
       serviceAccountName: openshift-gitops-argocd-application-controller
       dnsPolicy: ClusterFirst
