@@ -3,5 +3,5 @@ kind: Kustomization
 
 namespace: stackrox
 
-bases:
+resources:
   - https://github.com/redhat-cop/gitops-catalog/advanced-cluster-security-operator/instance/overlays/internal-registry-integration?ref=v0.7

@@ -6,11 +6,9 @@ namespace: workload-monitoring
 commonAnnotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 
-bases:
+resources:
   - https://github.com/redhat-cop/gitops-catalog/grafana-operator/overlays/user-app
   - dashboards
-
-resources:
   - namespace.yaml
   - grafana-operatorgroup.yaml
 

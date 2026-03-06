@@ -3,6 +3,6 @@ kind: Kustomization
 
 namespace: openshift-operators
 
-bases:
+resources:
   - github.com/redhat-cop/gitops-catalog/amq-streams-operator/base?ref=v0.5
 

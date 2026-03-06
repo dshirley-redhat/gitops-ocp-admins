@@ -3,9 +3,7 @@ kind: Kustomization
 
 namespace: contoso-test
 
-bases:
+resources:
   - ../base/rbac/users
   - ../base/rbac/pipelines
-
-resources:
   - namespace.yaml

@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
+resources:
   # Game of Life namespaces.
   - gameoflife-cicd
   - gameoflife-dev

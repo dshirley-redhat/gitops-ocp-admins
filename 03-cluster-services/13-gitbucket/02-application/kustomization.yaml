@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: gitbucket
 
-bases:
+resources:
   - imageStream.yaml
   - buildconfigs.yaml
   - jobs.yaml

@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 
 namespace: openshift-gitops
 
-bases:
+resources:
   - ../../../03-cluster-services/00-developer-gitops
   - ../../../03-cluster-services/10-logging
   - ../../../03-cluster-services/11-cicd-tools
@@ -19,6 +19,4 @@ bases:
   #- ../../../03-cluster-services/07-compliance
   #- ../../../03-cluster-services/08-advanced-cluster-security
   #- ../../../03-cluster-services/09-storage
-
-resources:
   - cluster-services-project.yaml

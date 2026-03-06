@@ -3,9 +3,7 @@ kind: Kustomization
 
 namespace: petclinic-test
 
-bases:
+resources:
   - ../base/rbac/users
   - ../base/rbac/pipelines
-
-resources:
   - namespace.yaml

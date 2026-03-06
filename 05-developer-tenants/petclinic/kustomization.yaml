@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: developer-gitops
 
-bases:
+resources:
   - petclinic-project.yaml
   - dev
   - test

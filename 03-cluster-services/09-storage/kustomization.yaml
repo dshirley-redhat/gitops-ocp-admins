@@ -1,9 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases: []
-  #- openshift-storage-operator
-
 resources: []
+  #- openshift-storage-operator
   #- obc-registry.yaml
   #- instance

@@ -3,10 +3,8 @@ kind: Kustomization
 
 namespace: cicd-tools
 
-bases:
-  - ../base/rbac
-
 resources:
+  - ../base/rbac
   - namespace.yaml
   #- nexus-consolelink.yaml
   #- sonarqube-consolelink.yaml
